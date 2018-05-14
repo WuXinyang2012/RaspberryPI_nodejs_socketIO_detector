@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Fruit and Vegetable detector service</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+   <div class="container">
+      <h1 class="jumbotron">
+         Fruit and Vegetable detector service
+      </h1>
+      <div class="row" style="margin-top: 70px;">
+         <div class="col-md-4"></div>
+         <div class="col-md-6">
+            <div id="chatArea">
+            </div>
+            <form id="myForm">
+               <div class="form-group">
+                  <button type="submit" class="btn btn-success">Start</button>
+               </div>
+            </form>
+            <form id="myForm2">
+               <div class="form-group">
+                  <button type="submit" class="btn btn-success">Infer</button>
+               </div>
+            </form>
+            <form id="myForm3">
+               <div class="form-group">
+                  <button type="submit" class="btn btn-success">End</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+<script>
+      jQuery(document).ready(function() {
+         var socket = io.connect();
+         var form = jQuery('#myForm');
+         var form2 = jQuery('#myForm2');
+         var form3 = jQuery('#myForm3');
+         var txt = jQuery('#txt');
+         var chatArea = jQuery('#chatArea');
+         
+         
+         form.submit(function(e){
+            e.preventDefault();
+            socket.emit('start message');
+                   
+         });
+    
+         form2.submit(function(e){
+            e.preventDefault();
+            socket.emit('infer message');
+           
+         });
+
+         form3.submit(function(e){
+            e.preventDefault();
+            socket.emit('exit message');
+               
+         });
+
+
+
+         socket.on('print message', function(data){
+            chatArea.append('<div class="well">'+data.message+'</div>');
+        });
+
+
+      });
+   </script>
+</body>
+</html>

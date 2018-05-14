@@ -1,0 +1,22 @@
+classes
+cabbage
+peach
+pear
+tomato
+berry
+lettuce
+onion
+apple
+carrot
+strawberry
+orange
+lemon
+pineapple, ananas
+banana
+custard apple
+pomegranate
+carbonara
+pizza, pizza pie
+potpie
+burrito
+
