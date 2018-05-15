@@ -6,7 +6,7 @@ You can use this html to send some signals to test the functionality of the serv
 
 Besides using one html, you can also specify your own interface with using 4 specified emit signals: "start", "infer", "exit" to control the detector, and "print message" to collect results in json format.     
 
-node version 10.0.0  
+node version 8.11.1 
 And you need to set up Movidius NCS SDK before use.
 
 Usage:   
